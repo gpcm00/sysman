@@ -1,0 +1,41 @@
+18:11:29 - ERROR c_messages: stderr test 1
+18:11:29 - INFO c_messages: Printf test
+stdout test 1
+18:11:34 - ERROR send_messages: sending an error message at 2025-01-26 18:11:34
+18:11:38 - ERROR c_messages: stderr test 2
+18:11:38 - INFO c_messages: stdout test 2
+18:11:38 - ERROR cpp_messages: error message
+18:11:38 - INFO cpp_messages: sleeping for 9 seconds
+18:11:39 - INFO send_messages: sending an info message at 2025-01-26 18:11:39
+18:11:44 - ERROR send_messages: sending an error message at 2025-01-26 18:11:44
+18:11:47 - ERROR c_messages: stderr test 3
+18:11:47 - INFO c_messages: stdout test 3
+18:11:48 - ERROR cpp_messages: terminate called after throwing an instance of 'std::runtime_error'
+  what():  runtime error
+18:11:49 - INFO send_messages: sending an info message at 2025-01-26 18:11:49
+18:11:54 - ERROR send_messages: sending an error message at 2025-01-26 18:11:54
+18:11:56 - INFO c_messages: stdout test 4
+18:11:56 - ERROR c_messages: stderr test 4
+18:11:57 - ERROR cpp_messages: error message
+18:11:57 - INFO cpp_messages: sleeping for 9 seconds
+18:12:00 - INFO send_messages: sending an info message at 2025-01-26 18:12:00
+18:12:05 - ERROR c_messages: stderr test 5
+18:12:05 - INFO c_messages: stdout test 5
+18:12:05 - ERROR send_messages: sending an error message at 2025-01-26 18:12:05
+18:12:07 - ERROR cpp_messages: terminate called after throwing an instance of 'std::runtime_error'
+  what():  runtime error
+18:12:11 - INFO send_messages: sending an info message at 2025-01-26 18:12:11
+18:12:14 - ERROR c_messages: stderr test 6
+18:12:14 - INFO c_messages: stdout test 6
+18:12:16 - INFO cpp_messages: sleeping for 9 seconds
+18:12:16 - ERROR cpp_messages: error message
+18:12:18 - ERROR send_messages: sending an error message at 2025-01-26 18:12:18
+18:12:23 - INFO c_messages: stdout test 7
+18:12:23 - ERROR c_messages: stderr test 7
+18:12:24 - INFO send_messages: sending an info message at 2025-01-26 18:12:24
+18:12:26 - ERROR cpp_messages: terminate called after throwing an instance of 'std::runtime_error'
+  what():  runtime error
+18:12:32 - INFO c_messages: stdout test 8
+18:12:32 - ERROR c_messages: stderr test 8
+18:12:32 - ERROR send_messages: sending an error message at 2025-01-26 18:12:32
+18:12:32 - ERROR cpp_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - 18:12:32 - INFO c_messages: 18:12:32 - ERROR c_messages: 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - ERROR send_messages: 18:12:32 - INFO send_messages: 18:12:32 - INFO c_messages: 

@@ -1,0 +1,12 @@
+17:35:36 - INFO test1: Hello from parent (message 1)!
+17:35:36 - ERROR test1: Hello from parent (message 1)!
+17:35:36 - INFO test2: Hello from parent (message 1)!
+17:35:36 - ERROR test2: Hello from parent (message 1)!
+17:35:39 - INFO test1: This is another message.
+17:35:39 - INFO test2: This is another message.
+17:35:39 - ERROR test1: This is another message.
+17:35:39 - ERROR test2: This is another message.
+17:35:42 - INFO test1: End of messages.
+17:35:42 - ERROR test2: End of messages.
+17:35:42 - INFO test2: End of messages.
+17:35:42 - ERROR test1: End of messages.
