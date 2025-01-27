@@ -38,4 +38,3 @@ stdout test 1
 18:12:32 - INFO c_messages: stdout test 8
 18:12:32 - ERROR c_messages: stderr test 8
 18:12:32 - ERROR send_messages: sending an error message at 2025-01-26 18:12:32
-18:12:32 - ERROR cpp_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - INFO c_messages: 18:12:32 - 18:12:32 - INFO c_messages: 18:12:32 - ERROR c_messages: 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - 18:12:32 - ERROR send_messages: 18:12:32 - INFO send_messages: 18:12:32 - INFO c_messages: 
