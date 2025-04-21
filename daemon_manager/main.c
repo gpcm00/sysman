@@ -7,6 +7,7 @@
 #include <syslog.h>
 #include <errno.h>
 #include <signal.h>
+#include <pty.h>
 #include <wait.h>
 #include <sys/types.h>
 
@@ -174,17 +175,46 @@ bool create_process(struct process *proc)
     return true;
 }
 
+bool set_cloexec(int fd) 
+{
+    int flags = fcntl(fd, F_GETFD);
+    if (flags == -1) {
+        return false;
+    }
+
+    if (fcntl(fd, F_SETFD, flags | FD_CLOEXEC) == -1) {
+        return false;
+    }
+
+    return true;
+}
+
+// use int to comply with standard system call failure method (-1 for fail)
+int create_pseudopty(int *fd, char* name) 
+{
+    int res = openpty(&fd[WR], &fd[RD], NULL, NULL, NULL);
+    if (res == -1) {
+        return -1;
+    }
+
+    if (!set_cloexec(fd[RD]) || !set_cloexec(fd[WR])) {
+        return -1;
+    }
+
+    return 0;
+}
+
 void create_pipe(struct process *proc)
 {
     __exit_if_error(
-        pipe2(proc->fd.info, O_CLOEXEC), 
-        "info pipe(%s): %s", 
+        create_pseudopty(proc->fd.info, proc->args[0]),
+        "info openpty(%s): %s",
         proc->args[0], strerror(errno)
     );
 
     __exit_if_error(
-        pipe2(proc->fd.error, O_CLOEXEC), 
-        "error pipe(%s): %s", 
+        create_pseudopty(proc->fd.error, proc->args[0]),
+        "error openpty(%s): %s",
         proc->args[0], strerror(errno)
     );
 }

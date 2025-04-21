@@ -6,6 +6,8 @@ from datetime import datetime
 import os
 
 
+print("Initializing send_messages.py")
+
 increment = 0.1
 sleep_time = 5
 while True:

@@ -14,13 +14,10 @@ int main()
     pid_t pid = fork();
     if (pid == 0) {
         dup2(fd[1], 2);
-        // setvbuf(stdout, NULL, _IONBF, 0);  // Disable buffering
         char *args[] = {"cpp_messages", "1", NULL};
         execv("cpp_messages", args);
         exit(EXIT_FAILURE);
     } else {
-        int flags = fcntl(fd[0], F_GETFL);
-        // fcntl(fd[0], F_SETFL, flags | O_NONBLOCK);
         while (1) {
             char buffer[1024];
             memset(buffer, 0, sizeof(buffer));

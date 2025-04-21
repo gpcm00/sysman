@@ -4,9 +4,6 @@
 
 int main(int argc, char** argv)
 {
-    setvbuf(stdout, NULL, _IONBF, 0);
-    setvbuf(stderr, NULL, _IONBF, 0);
-
     if (argc != 2) {
         fprintf(stderr, "usage: %s <min>\n", argv[0]);
         exit(EXIT_FAILURE);
