@@ -27,7 +27,7 @@ use build.sh and the Makefile in the root folder to understand how to build this
 
 i recommend using the Makefile inside daemon_manager and log_manager if you are planning to use this with buildroot.
 
-check all_processes array in daemon_manager/main.c to check how daemon are initialized. i want to add a parser eventually to make this more extensibile
+check all_processes array in daemon_manager/main.c to check how daemon are initialized. i want to add a parser eventually to make this more extensible
 
  # TODO
 
