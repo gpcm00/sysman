@@ -1,11 +1,8 @@
 DIR=$(dirname $(realpath $0))
 APP_PATH="${1:-$DIR/daemon_manager/}"
 
-
 cd $DIR
 cd daemon_manager/test
-
-echo "Using path: $INPUT_PATH"
 
 rm -f c_messages cpp_messages
 

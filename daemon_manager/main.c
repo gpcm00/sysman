@@ -11,6 +11,9 @@
 #include <wait.h>
 #include <sys/types.h>
 
+#include "common.h"
+#include "parser.h"
+
 #ifndef LOG_MANAGER_PATH
 #define LOG_MANAGER_PATH 
 #endif
@@ -21,9 +24,9 @@
 
 #define __log_info(...)	syslog(LOG_INFO, __VA_ARGS__)
 #define __log_err(...)	syslog(LOG_ERR, __VA_ARGS__)
-#define __len(arr)      (sizeof(arr)/sizeof(arr[0]))
+#define __len(arr)      arr ## _sz
 
-#define MAX_NUM_OF_ARGS 5
+#define MAX_NUM_OF_ARGS 6
 #define TRIES_THRESHOLD 50
 
 #define __case_state_name(n)    case n: return #n
@@ -39,12 +42,6 @@
 #define RD      0
 #define WR      1
 
-#define DEFAULT_INITIAL_PARAM                          \
-    .alive = false,                                    \
-    .pid = -1,                                         \
-    .fd = {                                            \
-        {0,0}, {0,0}                                   \
-    }                                                  \
 
 typedef enum {
     running = 0,
@@ -53,53 +50,9 @@ typedef enum {
     suspend_error,
     restarting_error,
 } global_state_t;
-
-struct file_descriptor {
-    int info[2];
-    int error[2];
-};
-
-struct process {
-    char *path;
-    char *args[MAX_NUM_OF_ARGS];
-    bool alive;
-    pid_t pid;
-    struct file_descriptor fd;
-};
-
-struct process all_processes[] = {
-    {
-        .path = LOG_MANAGER_PATH"log_manager",
-        .args = {
-            "log_manager", "2" , "cpp_messages", "c_messages", "send_messages",
-        },
-        DEFAULT_INITIAL_PARAM,
-    },
-
-    {
-        .path = APP_PATH"test/cpp_messages",
-        .args = {
-            "cpp_messages", "9", NULL, NULL, NULL,
-        },
-        DEFAULT_INITIAL_PARAM,
-    },
-
-    {
-        .path = APP_PATH"test/c_messages",
-        .args = {
-            "c_messages", "9", NULL, NULL, NULL,
-        },
-        DEFAULT_INITIAL_PARAM,
-    },
-
-    {
-        .path = APP_PATH"test/send_messages.py",
-        .args = {
-            "send_messages", NULL, NULL, NULL, NULL,
-        },
-        DEFAULT_INITIAL_PARAM,
-    },
-};
+ 
+struct process* all_processes = NULL;
+size_t __len(all_processes) = 0;
 
 global_state_t global_state = running;
 
@@ -332,6 +285,18 @@ struct sigaction init_sigaction(void (*handler)(int))
 int main(int argc, char** argv)
 {
     openlog("daemon_manager", LOG_PID, LOG_USER);
+
+    if (argc != 2) {
+        __log_err("%s: invalid number or arguments\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    __exit_if_error(
+        access(argv[1], R_OK),
+        "access(%s): %s", argv[1], strerror(errno)
+    );
+
+    __len(all_processes) = parse_processes(argv[1], &all_processes);
 
     struct sigaction term = init_sigaction(terminate);
 	struct sigaction chld = init_sigaction(kill_child);

@@ -1,6 +1,6 @@
 CC ?= $(CROSS_COMPILE)gcc
 CFLAGS ?= -Wall -Werror
-OBJ := main.o
+OBJ := main.o parser.o
 TARGET := daemon_manager
 ADDDEFINE :=
 

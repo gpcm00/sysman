@@ -142,19 +142,21 @@ void* log_thread(void* arg)
 	return NULL;
 }
 
-// int main()
-// {
-// 	struct global_logpath glp;
-// 	init_global_logpath(&glp);
-// 	set_global_logpath(&glp, "1999_Jan_01.log");
+#if 0
+int main()
+{
+	struct global_logpath glp;
+	init_global_logpath(&glp);
+	set_global_logpath(&glp, "1999_Jan_01.log");
 
-// 	struct thread_arg arg = {
-// 		.prefix = "testing prefix: ",
-// 		.fd = 0,
-// 		.log = &glp
-// 	};
+	struct thread_arg arg = {
+		.prefix = "testing prefix: ",
+		.fd = 0,
+		.log = &glp
+	};
 
-// 	log_thread(&arg);
+	log_thread(&arg);
 
-// 	return 0;
-// }
+	return 0;
+}
+#endif

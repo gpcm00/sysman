@@ -13,8 +13,11 @@
 #include "file_logger.h"
 #include "file_manager.h"
 
-#define __sizeofprefix(b)  ((b)? sizeof("INFO ") : sizeof("ERROR "))
-#define __getprefix(b)     ((b)? "INFO " : "ERROR ")
+#define INFO_PREFIX     "INFO:  "
+#define ERROR_PREFIX    "ERROR: "
+
+#define __sizeofprefix(b)  ((b)? sizeof(INFO_PREFIX) : sizeof(ERROR_PREFIX))
+#define __getprefix(b)     ((b)? INFO_PREFIX : ERROR_PREFIX)
 
 typedef unsigned int uint;
 typedef unsigned char uchar;
