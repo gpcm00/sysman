@@ -1,5 +1,4 @@
 DIR=$(dirname $(realpath $0))
-APP_PATH="${1:-$DIR/daemon_manager/}"
 
 cd $DIR
 cd daemon_manager/test
@@ -13,4 +12,4 @@ gcc c_messages.c -o c_messages
 cd $DIR
 
 make clean
-make NEW_LOG_PATH=$(pwd)/log/ NEW_APP_PATH=$APP_PATH NEW_LOG_MANAGER_PATH=$(pwd)/log_manager/
+make NEW_LOG_PATH=$(pwd)/log/ NEW_LOG_MANAGER_PATH=$(pwd)/log_manager/

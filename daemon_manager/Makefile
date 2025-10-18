@@ -8,10 +8,6 @@ ifdef DEBUGGING
     CFLAGS += -g
 endif
 
-ifdef APP_PATH
-	ADDDEFINE += -DAPP_PATH="\"$(APP_PATH)\""
-endif
-
 ifdef LOG_MANAGER_PATH
 	ADDDEFINE += -DLOG_MANAGER_PATH="\"$(LOG_MANAGER_PATH)\""
 endif

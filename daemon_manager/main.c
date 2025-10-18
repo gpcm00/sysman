@@ -18,10 +18,6 @@
 #define LOG_MANAGER_PATH 
 #endif
 
-#ifndef APP_PATH
-#define APP_PATH 
-#endif
-
 #define __log_info(...)	syslog(LOG_INFO, __VA_ARGS__)
 #define __log_err(...)	syslog(LOG_ERR, __VA_ARGS__)
 #define __len(arr)      arr ## _sz
@@ -67,7 +63,6 @@ void terminate(int signum)
 	    break;
     }
 }
-
 
 void kill_child(int signum)
 {
